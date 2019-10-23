@@ -1,0 +1,28 @@
+{
+  "name": "mpg",
+  "version": "1.0.0",
+  "description": "mpg on my 2000 toyota 4runner",
+  "author": "brettinternet",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "setup": "npm run scripts:get-csv",
+    "start": "parcel public/index.html",
+    "prebuild": "npm run scripts:get-csv",
+    "build": "parcel build public/index.html",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scripts:get-csv": "node bin/get-csv.js"
+  },
+  "devDependencies": {
+    "chalk": "^2.4.2",
+    "dotenv": "^8.2.0",
+    "parcel-bundler": "^1.12.4",
+    "prettier": "^1.18.2",
+    "request": "^2.88.0"
+  },
+  "dependencies": {
+    "chart.js": "^2.8.0",
+    "lodash": "^4.17.15",
+    "unfetch": "^4.1.0"
+  }
+}
