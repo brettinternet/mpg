@@ -8,17 +8,22 @@
   "scripts": {
     "setup": "npm run scripts:get-csv",
     "start": "parcel public/index.html",
-    "prebuild": "npm run scripts:get-csv",
-    "build": "parcel build public/index.html",
+    "prebuild": "npm run clean && npm run scripts:get-csv",
+    "build": "parcel build public/index.html --public-url ./",
+    "clean": "rimraf dist .cache",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "scripts:get-csv": "node bin/get-csv.js"
+    "scripts:get-csv": "node bin/get-csv.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "devDependencies": {
     "chalk": "^2.4.2",
     "dotenv": "^8.2.0",
+    "gh-pages": "^2.1.1",
     "parcel-bundler": "^1.12.4",
     "prettier": "^1.18.2",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "rimraf": "^3.0.0"
   },
   "dependencies": {
     "chart.js": "^2.8.0",
