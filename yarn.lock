@@ -3086,6 +3086,11 @@ kind-of@^6.0.0, kind-of@^6.0.2:
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-6.0.2.tgz#01146b36a6218e64e58f3a8d66de5d7fc6f6d051"
   integrity sha512-s5kLOcnH0XqDO+FvuaLX8DDjZ18CGFk7VygH40QoKPUQhW4e2rvM0rwUq0t8IQDOwYSeLK01U90OjzBTme2QqA==
 
+lazysizes@^5.1.2:
+  version "5.1.2"
+  resolved "https://registry.yarnpkg.com/lazysizes/-/lazysizes-5.1.2.tgz#1baf41b8f3f2aef1054120e41c6efd0e83d417a3"
+  integrity sha512-j9hQgryLCwQ0EGRr282RS6h3UHLbJnbaS/VfrADOvduhfnFpmcsdPVygdWrlu1hsYgKTjhOiLCVI75RKd3fsvg==
+
 levn@~0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/levn/-/levn-0.3.0.tgz#3b09924edf9f083c0490fdd4c0bc4421e04764ee"
