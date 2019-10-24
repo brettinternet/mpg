@@ -1,1 +1,0 @@
-{"version":3,"sources":["main.css"],"names":[],"mappings":"AAAA,KACE,QAAS,CACT,WACF,CAEA,MACE,YACF,CAEA,iBACE,eAAgB,CAChB,WACF","file":"public.bda18aa9.css","sourceRoot":"..\\public","sourcesContent":["body {\r\n  margin: 0;\r\n  height: 100%;\r\n}\r\n\r\n.main {\r\n  padding: 1rem;\r\n}\r\n\r\n.chart-container {\r\n  max-width: 800px;\r\n  margin: auto;\r\n}\r\n"]}
