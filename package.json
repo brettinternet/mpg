@@ -27,7 +27,6 @@
   },
   "dependencies": {
     "chart.js": "^2.8.0",
-    "lazysizes": "^5.1.2",
     "lodash": "^4.17.15",
     "unfetch": "^4.1.0"
   }
