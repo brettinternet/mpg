@@ -1,9 +1,7 @@
 {
   "name": "mpg",
-  "version": "1.0.0",
   "description": "mpg on my 2000 toyota 4runner",
   "author": "brettinternet",
-  "main": "index.js",
   "license": "MIT",
   "scripts": {
     "start": "parcel src/index.html",

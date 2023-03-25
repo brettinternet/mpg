@@ -34,8 +34,8 @@ function getData(table) {
       {
         label: labels.PRICE,
         data: table.reduce((acc, val, index) => {
-          if (index > 0) {
-            const [date, mileage, gallons, price] = val
+          const [date, mileage, gallons, price] = val
+          if (index > 0 && date) {
             acc.push({ x: new Date(date), y: price / gallons })
             return acc
           }
@@ -57,8 +57,8 @@ function getData(table) {
       {
         label: labels.MPG,
         data: table.reduce((acc, val, index, arr) => {
-          if (index > 0) {
-            const [date, mileage, gallons, price] = val
+          const [date, mileage, gallons, price] = val
+          if (index > 0 && date) {
             const prevMileage = arr[index - 1][1]
             const miles = mileage - prevMileage
             acc.push({ x: new Date(date), y: miles / gallons })
@@ -79,8 +79,8 @@ function getData(table) {
       {
         label: labels.MILEAGE,
         data: table.reduce((acc, val, index, arr) => {
-          if (index > 0) {
-            const [date, mileage, gallons, price] = val
+          const [date, mileage, gallons, price] = val
+          if (index > 0 && date) {
             acc.push({ x: new Date(date), y: mileage })
             return acc
           }
@@ -132,6 +132,9 @@ function getOptions() {
           },
           gridLines: {
             display: false,
+          },
+          ticks: {
+            max: 60,
           },
         },
         {

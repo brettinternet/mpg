@@ -1,5 +1,6 @@
 import fetch from 'unfetch'
 import mpgGraph from './chart'
+import { isEmpty } from './utils'
 
 export default (csv) => {
   fetch(csv).then(deserialize).then(parse).then(setup).catch(console.error)
@@ -37,14 +38,20 @@ function displayData(table) {
 function calculateSum(table, columnId) {
   const header = table[0].map((v) => v.trim())
   const column = header.indexOf(columnId)
-  const sum = table.slice(1).reduce((acc, val) => {
-    const value = Number(val[column])
-    if (!isNaN(value)) {
-      return acc + value
-    } else {
-      console.error(`Bad value ${val[column]} is type ${typeof value}`)
-      return acc
+  const sum = table.slice(1).reduce((acc, val, index) => {
+    if (!isEmpty(val[column])) {
+      const value = Number(val[column])
+      if (!isNaN(value)) {
+        return acc + value
+      } else {
+        console.error(
+          `Unable to sum bad value in column '${header[column]}' with value '${
+            val[column]
+          }' on line ${index + 2}`
+        )
+      }
     }
+    return acc
   }, 0)
   const roundedValue = parseFloat(Math.round(sum * 100) / 100).toFixed(2)
   return numberWithCommas(roundedValue)
@@ -54,8 +61,19 @@ function calculateDistance(table) {
   const header = table[0]
   const column = header.indexOf('mileage')
   const tableBody = table.slice(1)
-  const mostRecentMileage = Number(tableBody[tableBody.length - 1][column])
-  const firstMileage = Number(tableBody[0][column])
+  let lastValue = tableBody[tableBody.length - 1][column]
+  let i = 1
+  while (isEmpty(lastValue) && i < 2) {
+    i++
+    lastValue = tableBody[tableBody.length - i][column]
+  }
+  if (isNaN(lastValue)) {
+    console.error('Unable to calculate mileage distance')
+    return 0
+  }
+  const firstValue = tableBody[0][column]
+  const mostRecentMileage = Number(lastValue)
+  const firstMileage = Number(firstValue)
   return numberWithCommas(mostRecentMileage - firstMileage)
 }
 

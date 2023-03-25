@@ -19,3 +19,7 @@ export const labels = {
   PRICE: 'price/gallon',
   MILEAGE: 'mileage',
 }
+
+export function isEmpty(arg) {
+  return typeof arg === 'undefined' || arg === null || arg === ''
+}
