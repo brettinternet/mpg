@@ -29,6 +29,14 @@ footer {
   text-align: center;
 }
 
+footer a {
+  margin-right: 1rem;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
 h1 {
   margin: 0 0 1rem;
 }
