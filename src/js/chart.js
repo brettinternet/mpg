@@ -66,10 +66,7 @@ function getData(table) {
           }
           return acc
         }, []),
-        backgroundColor: Chart.helpers
-          .color(colors.red)
-          .alpha(0.5)
-          .rgbString(),
+        backgroundColor: Chart.helpers.color(colors.red).alpha(0.5).rgbString(),
         borderColor: colors.red,
         borderWidth: 1,
         type: 'line',
@@ -146,7 +143,7 @@ function getOptions() {
             labelString: 'price/gallon',
           },
           ticks: {
-            callback: function(value, index, values) {
+            callback: function (value, index, values) {
               return '$' + value
             },
           },
@@ -165,7 +162,7 @@ function getOptions() {
       intersect: false,
       mode: 'index',
       callbacks: {
-        label: function(tooltipItem, myData) {
+        label: function (tooltipItem, myData) {
           var label = myData.datasets[tooltipItem.datasetIndex].label || ''
           if (label) {
             label += ': '

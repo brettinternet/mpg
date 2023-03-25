@@ -1,6 +1,6 @@
 import './main.css'
 
 import main from './js/main'
-import csv from '../mpg.csv'
+import csv from 'url:../mpg.csv'
 
 main(csv)

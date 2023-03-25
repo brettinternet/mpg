@@ -1,12 +1,8 @@
 import fetch from 'unfetch'
 import mpgGraph from './chart'
 
-export default csv => {
-  fetch(csv)
-    .then(deserialize)
-    .then(parse)
-    .then(setup)
-    .catch(console.error)
+export default (csv) => {
+  fetch(csv).then(deserialize).then(parse).then(setup).catch(console.error)
 }
 
 function deserialize(res) {
@@ -14,7 +10,7 @@ function deserialize(res) {
 }
 
 function parse(str) {
-  return str.split('\n').map(line => line.split(','))
+  return str.split('\n').map((line) => line.split(','))
 }
 
 function setup(table) {
@@ -39,10 +35,16 @@ function displayData(table) {
 }
 
 function calculateSum(table, columnId) {
-  const header = table[0]
+  const header = table[0].map((v) => v.trim())
   const column = header.indexOf(columnId)
   const sum = table.slice(1).reduce((acc, val) => {
-    return acc + Number(val[column])
+    const value = Number(val[column])
+    if (!isNaN(value)) {
+      return acc + value
+    } else {
+      console.error(`Bad value ${val[column]} is type ${typeof value}`)
+      return acc
+    }
   }, 0)
   const roundedValue = parseFloat(Math.round(sum * 100) / 100).toFixed(2)
   return numberWithCommas(roundedValue)
